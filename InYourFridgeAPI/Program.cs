@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using InYourFridgeAPI.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<InYourFridgeAPIContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("InYourFridgeAPIContext") ?? throw new InvalidOperationException("Connection string 'InYourFridgeAPIContext' not found.")));
 
 // Add services to the container.
 
