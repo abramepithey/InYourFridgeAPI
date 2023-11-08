@@ -25,24 +25,24 @@ namespace InYourFridgeAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ingredient>>> GetIngredient()
         {
-            if (_context.Ingredient == null)
+            if (_context.Ingredients == null)
             {
                 return NotFound();
             }
 
-            return await _context.Ingredient.ToListAsync();
+            return await _context.Ingredients.ToListAsync();
         }
 
         // GET: api/Ingredient/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Ingredient>> GetIngredient(int id)
         {
-            if (_context.Ingredient == null)
+            if (_context.Ingredients == null)
             {
                 return NotFound();
             }
 
-            var ingredient = await _context.Ingredient.FindAsync(id);
+            var ingredient = await _context.Ingredients.FindAsync(id);
 
             if (ingredient == null)
             {
@@ -88,12 +88,12 @@ namespace InYourFridgeAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Ingredient>> PostIngredient(Ingredient ingredient)
         {
-            if (_context.Ingredient == null)
+            if (_context.Ingredients == null)
             {
                 return Problem("Entity set 'InYourFridgeAPIContext.Ingredient'  is null.");
             }
 
-            _context.Ingredient.Add(ingredient);
+            _context.Ingredients.Add(ingredient);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetIngredient", new { id = ingredient.Id }, ingredient);
@@ -103,18 +103,18 @@ namespace InYourFridgeAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteIngredient(int id)
         {
-            if (_context.Ingredient == null)
+            if (_context.Ingredients == null)
             {
                 return NotFound();
             }
 
-            var ingredient = await _context.Ingredient.FindAsync(id);
+            var ingredient = await _context.Ingredients.FindAsync(id);
             if (ingredient == null)
             {
                 return NotFound();
             }
 
-            _context.Ingredient.Remove(ingredient);
+            _context.Ingredients.Remove(ingredient);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -122,7 +122,7 @@ namespace InYourFridgeAPI.Controllers
 
         private bool IngredientExists(int id)
         {
-            return (_context.Ingredient?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Ingredients?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
