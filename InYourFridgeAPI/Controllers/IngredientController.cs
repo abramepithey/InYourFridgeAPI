@@ -25,10 +25,11 @@ namespace InYourFridgeAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ingredient>>> GetIngredient()
         {
-          if (_context.Ingredient == null)
-          {
-              return NotFound();
-          }
+            if (_context.Ingredient == null)
+            {
+                return NotFound();
+            }
+
             return await _context.Ingredient.ToListAsync();
         }
 
@@ -36,10 +37,11 @@ namespace InYourFridgeAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Ingredient>> GetIngredient(int id)
         {
-          if (_context.Ingredient == null)
-          {
-              return NotFound();
-          }
+            if (_context.Ingredient == null)
+            {
+                return NotFound();
+            }
+
             var ingredient = await _context.Ingredient.FindAsync(id);
 
             if (ingredient == null)
@@ -86,10 +88,11 @@ namespace InYourFridgeAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Ingredient>> PostIngredient(Ingredient ingredient)
         {
-          if (_context.Ingredient == null)
-          {
-              return Problem("Entity set 'InYourFridgeAPIContext.Ingredient'  is null.");
-          }
+            if (_context.Ingredient == null)
+            {
+                return Problem("Entity set 'InYourFridgeAPIContext.Ingredient'  is null.");
+            }
+
             _context.Ingredient.Add(ingredient);
             await _context.SaveChangesAsync();
 
@@ -104,6 +107,7 @@ namespace InYourFridgeAPI.Controllers
             {
                 return NotFound();
             }
+
             var ingredient = await _context.Ingredient.FindAsync(id);
             if (ingredient == null)
             {

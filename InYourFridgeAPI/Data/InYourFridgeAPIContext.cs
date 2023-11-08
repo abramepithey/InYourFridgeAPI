@@ -14,6 +14,6 @@ namespace InYourFridgeAPI.Data
         {
         }
 
-        public DbSet<InYourFridgeAPI.Models.Ingredient> Ingredient { get; set; } = default!;
+        public DbSet<Ingredient> Ingredient { get; set; } = default!;
     }
 }
