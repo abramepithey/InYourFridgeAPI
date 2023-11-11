@@ -3,6 +3,7 @@ using System;
 using InYourFridgeAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InYourFridgeAPI.Migrations
 {
     [DbContext(typeof(InYourFridgeAPIContext))]
-    partial class InYourFridgeAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20231111034806_Update Ingredient")]
+    partial class UpdateIngredient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
