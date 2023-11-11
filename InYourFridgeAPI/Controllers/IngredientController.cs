@@ -32,6 +32,23 @@ namespace InYourFridgeAPI.Controllers
 
             return await _context.Ingredients.ToListAsync();
         }
+        
+        // GET: api/ExpiredIngredients
+        [HttpGet("/api/ExpiredIngredients")]
+        public async Task<ActionResult<IEnumerable<Ingredient>>> GetExpiredIngredients()
+        {
+            if (_context.Ingredients == null)
+            {
+                return NotFound();
+            }
+            
+            if (!_context.Ingredients.Any(i => i.PurchaseDate.AddSeconds(i.ExpirationLength) < DateTime.Now))
+            {
+                return NotFound();
+            }
+
+            return await _context.Ingredients.Where(i => i.PurchaseDate.AddSeconds(i.ExpirationLength) < DateTime.Now).ToListAsync();
+        }
 
         // GET: api/Ingredient/5
         [HttpGet("{id}")]
