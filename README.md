@@ -8,4 +8,6 @@ Potential future plans for the project include adding more entities to the datab
 
 #### Links
 
+Due to using the free version of the database, it may be unresponsive for the first few calls, returning a 500 error code.  It should wake up and begin working within a minute, but reach out if the issue persists.
+
 [Hosted API](https://inyourfridgeapi.azurewebsites.net/swagger)
