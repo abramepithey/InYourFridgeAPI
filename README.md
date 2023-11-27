@@ -8,4 +8,4 @@ Potential future plans for the project include adding more entities to the datab
 
 #### Links
 
-[Hosted API](https://terminalhacker.azurewebsites.net)
+[Hosted API](https://intyourfridgeapi.azurewebsites.net)
